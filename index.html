@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amora</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div class="floor-plan">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Amora</h2>
+                    <p class="subtitle">Gestion de ventas</p>
+                </div>
+                
+                <div class="daily-stats">
+                    <span class="label">Today's Sales</span>
+                    <span id="daily-revenue" class="amount">$0.00</span>
+                    <button onclick="startNewDay()" class="btn-new-day">Start New Day</button>
+                </div>
+            </div>
+
+            <div class="tables-grid">
+                <div class="table-card" id="table-1" onclick="selectTable(1)">
+                    <div class="card-content">
+                        <span class="table-icon">☕</span>
+                        <h3>Table 1</h3>
+                        <p class="status">Free</p>
+                    </div>
+                    <p class="total">$0.00</p>
+                </div>
+
+                <div class="table-card" id="table-2" onclick="selectTable(2)">
+                    <div class="card-content">
+                        <span class="table-icon">🥐</span>
+                        <h3>Table 2</h3>
+                        <p class="status">Free</p>
+                    </div>
+                    <p class="total">$0.00</p>
+                </div>
+
+                <div class="table-card" id="table-3" onclick="selectTable(3)">
+                    <div class="card-content">
+                        <span class="table-icon">🍦</span>
+                        <h3>Table 3</h3>
+                        <p class="status">Free</p>
+                    </div>
+                    <p class="total">$0.00</p>
+                </div>
+
+                <div class="table-card" id="table-4" onclick="selectTable(4)">
+                    <div class="card-content">
+                        <span class="table-icon">🍰</span>
+                        <h3>Table 4</h3>
+                        <p class="status">Free</p>
+                    </div>
+                    <p class="total">$0.00</p>
+                </div>
+
+                <div class="table-card to-go" id="table-togo" onclick="selectTable('togo')">
+                    <div class="card-content">
+                        <span class="table-icon">🛍️</span>
+                        <h3>To Go</h3>
+                        <p class="status">Counter</p>
+                    </div>
+                    <p class="total">$0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-panel" id="order-panel">
+            <div class="panel-header">
+                <h2 id="selected-table-title">Select Table</h2>
+                <span id="payment-status-badge" class="badge hidden">UNPAID</span>
+            </div>
+
+            <div class="menu-section" id="menu-section">
+                
+                <div class="menu-category">
+                    <h3>☕ Coffees</h3>
+                    <div class="menu-grid">
+                        <button onclick="addItem('Espresso', 2.50)">Espresso <span>$2.50</span></button>
+                        <button onclick="addItem('Latte', 4.00)">Latte <span>$4.00</span></button>
+                        <button onclick="addItem('Cappuccino', 3.50)">Cappuccino <span>$3.50</span></button>
+                        <button onclick="addItem('Mocha', 4.50)">Mocha <span>$4.50</span></button>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>🥐 Food</h3>
+                    <div class="menu-grid">
+                        <button onclick="addItem('Croissant', 3.00)">Croissant <span>$3.00</span></button>
+                        <button onclick="addItem('Muffin', 2.00)">Muffin <span>$2.00</span></button>
+                        <button onclick="addItem('Sandwich', 6.50)">Sandwich <span>$6.50</span></button>
+                        <button onclick="addItem('Bagel', 3.50)">Bagel <span>$3.50</span></button>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>🍦 Desserts</h3>
+                    <div class="menu-grid">
+                        <button onclick="addItem('Ice Cream', 3.00)">Ice Cream <span>$3.00</span></button>
+                        <button onclick="addItem('Cake Slice', 5.00)">Cake Slice <span>$5.00</span></button>
+                        <button onclick="addItem('Cookie', 1.50)">Cookie <span>$1.50</span></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bill-section">
+                <h3>Current Order</h3>
+                <div class="order-list-wrapper">
+                    <ul id="order-list">
+                        <li class="empty-state">No items added yet...</li>
+                    </ul>
+                </div>
+                
+                <div class="bill-footer">
+                    <div class="totals">
+                        <p>Total Due</p>
+                        <p id="bill-total" class="big-price">$0.00</p>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="pay-btn" class="btn-pay" onclick="markAsPaid()">Complete Payment</button>
+                        <button id="close-btn" class="btn-close" onclick="closeTable()">Clear Table</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../js/index.js"></script>
+</body>
+</html>
